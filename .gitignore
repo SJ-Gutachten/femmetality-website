@@ -1,0 +1,16 @@
+# Betriebssystem
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Editor / temporäre Dateien
+*.log
+_preview*.png
+
+# Abhängigkeiten (falls später hinzukommen)
+node_modules/
+
+# Claude Code / Skill-Tooling — nicht Teil der Website
+.claude/
+.agents/
+skills-lock.json

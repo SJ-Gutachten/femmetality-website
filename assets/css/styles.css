@@ -1,0 +1,354 @@
+/* =================================================================
+   FEMMETALITY — Editorial Feminine, Bold & Timeless
+   Bespoke Layer (Tokens · Fonts · Components · Motion)
+   Tailwind (Play CDN) liefert die Utilities; diese Datei den Charakter.
+   ================================================================= */
+
+/* ---- Google Fonts ------------------------------------------------ */
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500;1,600&family=Montserrat:wght@300;400;500;600&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500;1,600&display=swap');
+
+/* ---- Design Tokens ---------------------------------------------- */
+:root {
+  --bg:         #FAF4F2;   /* warmes Creme */
+  --bg-2:       #F3E9E5;   /* leicht tieferes Creme für Sektionswechsel */
+  --plum:       #4A1E3D;   /* Leitfarbe Aubergine */
+  --plum-deep:  #2A1622;   /* Text / tiefste Fläche */
+  --plum-soft:  #6E3458;   /* helleres Plum für Verläufe */
+  --gold:       #C9A24B;   /* Akzent */
+  --gold-soft:  #E0C57F;
+  --blush:      #E8C4C4;   /* weiche Flächen */
+  --blush-soft: #F5E2E2;
+  --cream-card: #FFFDFB;   /* Karten */
+  --muted-fg:   #6B5560;   /* gedämpfter Text */
+  --border:     #E8DAD3;   /* zarte Rahmen */
+
+  --font-display: 'Playfair Display', 'Times New Roman', Georgia, serif;
+  --font-body:    'Montserrat', 'Helvetica Neue', Arial, sans-serif;
+  --font-accent:  'Cormorant Garamond', Georgia, 'Times New Roman', serif;
+
+  --ease: cubic-bezier(0.22, 1, 0.36, 1);
+  --shell: 1240px;
+}
+
+/* ---- Base -------------------------------------------------------- */
+* { -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility; }
+
+html { scroll-behavior: smooth; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+
+body {
+  background-color: var(--bg);
+  color: var(--plum-deep);
+  font-family: var(--font-body);
+  font-weight: 400;
+  line-height: 1.7;
+  overflow-x: hidden;
+}
+
+::selection { background: var(--plum); color: var(--bg); }
+
+h1, h2, h3, h4 { font-family: var(--font-display); font-weight: 700; line-height: 1.04; }
+
+a { color: inherit; text-decoration: none; }
+
+/* Paper-Grain Atmosphäre über der ganzen Seite */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  opacity: 0.035;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+/* ---- Layout-Hilfen ---------------------------------------------- */
+.shell { width: 100%; max-width: var(--shell); margin-inline: auto; padding-inline: 1.5rem; }
+@media (min-width: 768px) { .shell { padding-inline: 2.5rem; } }
+
+.eyebrow {
+  font-family: var(--font-body);
+  font-weight: 500;
+  font-size: 0.72rem;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  color: var(--gold);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+.eyebrow::before {
+  content: "";
+  width: 2.2rem;
+  height: 1px;
+  background: var(--gold);
+  display: inline-block;
+}
+.eyebrow.center::after {
+  content: "";
+  width: 2.2rem;
+  height: 1px;
+  background: var(--gold);
+  display: inline-block;
+}
+
+/* Fluid Display-Größen */
+.display-hero { font-size: clamp(3.4rem, 11vw, 9rem); letter-spacing: -0.02em; }
+.display-xl   { font-size: clamp(2.6rem, 6.5vw, 5rem); letter-spacing: -0.015em; }
+.display-lg   { font-size: clamp(2rem, 4.5vw, 3.25rem); letter-spacing: -0.01em; }
+
+.accent-italic { font-family: var(--font-accent); font-style: italic; font-weight: 500; }
+
+/* ---- Buttons ----------------------------------------------------- */
+.btn {
+  --_pad-y: 0.95rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  padding: var(--_pad-y) 1.9rem;
+  font-family: var(--font-body);
+  font-weight: 500;
+  font-size: 0.82rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  cursor: pointer;
+  border: 1px solid transparent;
+  border-radius: 999px;
+  transition: transform .25s var(--ease), background-color .25s var(--ease),
+              color .25s var(--ease), border-color .25s var(--ease), box-shadow .25s var(--ease);
+  will-change: transform;
+}
+.btn:focus-visible { outline: 2px solid var(--gold); outline-offset: 3px; }
+
+.btn-primary { background: var(--plum); color: var(--bg); }
+.btn-primary:hover { background: var(--plum-deep); transform: translateY(-2px); box-shadow: 0 14px 30px -12px rgba(42,22,34,.55); }
+
+.btn-ghost { background: transparent; color: var(--plum-deep); border-color: var(--plum-deep); }
+.btn-ghost:hover { background: var(--plum-deep); color: var(--bg); transform: translateY(-2px); }
+
+.btn-gold { background: var(--gold); color: var(--plum-deep); }
+.btn-gold:hover { background: var(--gold-soft); transform: translateY(-2px); box-shadow: 0 14px 30px -12px rgba(201,162,75,.6); }
+
+/* Auf dunklen (Plum-)Flächen */
+.on-dark .btn-ghost { color: var(--bg); border-color: rgba(250,244,242,.45); }
+.on-dark .btn-ghost:hover { background: var(--bg); color: var(--plum-deep); border-color: var(--bg); }
+
+/* Link mit animierter Goldlinie */
+.link-underline { position: relative; }
+.link-underline::after {
+  content: ""; position: absolute; left: 0; bottom: -4px; height: 1px; width: 100%;
+  background: var(--gold); transform: scaleX(0); transform-origin: right;
+  transition: transform .35s var(--ease);
+}
+.link-underline:hover::after { transform: scaleX(1); transform-origin: left; }
+
+/* ---- Image-Platzhalter (leicht austauschbar) --------------------
+   Foto einsetzen: ersetze die .img-ph durch
+   <img src="assets/img/dein-foto.jpg" alt="..." class="ph-fill">
+   ODER setze auf .img-ph ein style="background-image:url('...')".
+   ------------------------------------------------------------------ */
+.img-ph {
+  position: relative;
+  overflow: hidden;
+  border-radius: 4px;
+  background:
+    linear-gradient(135deg, rgba(110,52,88,.20), rgba(232,196,196,.35)),
+    var(--bg-2);
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  isolation: isolate;
+}
+.img-ph::after {
+  content: attr(data-label);
+  position: absolute;
+  font-family: var(--font-body);
+  font-size: 0.62rem;
+  letter-spacing: 0.26em;
+  text-transform: uppercase;
+  color: var(--plum);
+  opacity: 0.55;
+  padding: 0.5rem 0.9rem;
+  border: 1px solid rgba(74,30,61,.3);
+  border-radius: 999px;
+  background: rgba(255,253,251,.6);
+}
+.img-ph[style*="url"]::after { display: none; }
+.ph-fill { width: 100%; height: 100%; object-fit: cover; display: block; }
+
+/* Dekorativer Goldrahmen-Offset für Porträts */
+.framed { position: relative; }
+.framed::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  translate: 18px 18px;
+  border: 1px solid var(--gold);
+  border-radius: 4px;
+  z-index: -1;
+  transition: translate .5s var(--ease);
+}
+.framed:hover::before { translate: 12px 12px; }
+
+/* ---- Cards ------------------------------------------------------- */
+.card {
+  background: var(--cream-card);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  transition: transform .4s var(--ease), box-shadow .4s var(--ease), border-color .4s var(--ease);
+}
+.card:hover { transform: translateY(-6px); box-shadow: 0 28px 50px -30px rgba(42,22,34,.4); border-color: var(--blush); }
+
+.pillar-num {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 1rem;
+  color: var(--gold);
+  letter-spacing: 0.1em;
+}
+
+/* Angebots-Karte hervorgehoben */
+.card-feature { background: var(--plum); color: var(--bg); border-color: var(--plum); }
+.card-feature .price-meta,
+.card-feature .feat-item { color: rgba(250,244,242,.82); }
+.card-feature:hover { box-shadow: 0 34px 60px -28px rgba(42,22,34,.7); }
+
+.feat-item { display: flex; gap: 0.7rem; align-items: flex-start; color: var(--muted-fg); font-size: 0.92rem; }
+.feat-item svg { flex: none; margin-top: 0.28rem; color: var(--gold); }
+
+/* ---- Pull-Quote -------------------------------------------------- */
+.pull-quote {
+  font-family: var(--font-accent);
+  font-style: italic;
+  font-weight: 500;
+  font-size: clamp(1.6rem, 3.6vw, 2.9rem);
+  line-height: 1.28;
+}
+
+/* ---- FAQ Accordion ---------------------------------------------- */
+.faq-item { border-bottom: 1px solid var(--border); }
+.faq-trigger {
+  width: 100%; text-align: left; cursor: pointer; background: none; border: none;
+  padding: 1.6rem 0; display: flex; justify-content: space-between; align-items: center; gap: 1.5rem;
+  font-family: var(--font-display); font-size: clamp(1.15rem, 2vw, 1.45rem); color: var(--plum-deep);
+}
+.faq-trigger:focus-visible { outline: 2px solid var(--gold); outline-offset: 4px; }
+.faq-icon { flex: none; transition: transform .4s var(--ease); color: var(--gold); }
+.faq-trigger[aria-expanded="true"] .faq-icon { transform: rotate(45deg); }
+.faq-panel {
+  overflow: hidden; max-height: 0;
+  transition: max-height .5s var(--ease), opacity .4s var(--ease), padding .4s var(--ease);
+  opacity: 0; padding-bottom: 0;
+}
+.faq-panel p { color: var(--muted-fg); padding-right: 2rem; }
+
+/* ---- Form -------------------------------------------------------- */
+.field { position: relative; }
+.field label {
+  display: block; font-size: 0.7rem; letter-spacing: 0.2em; text-transform: uppercase;
+  color: var(--muted-fg); margin-bottom: 0.55rem; font-weight: 500;
+}
+.field input, .field textarea {
+  width: 100%; background: var(--cream-card); border: 1px solid var(--border);
+  border-radius: 4px; padding: 0.95rem 1.1rem; font-family: var(--font-body); font-size: 0.95rem;
+  color: var(--plum-deep); transition: border-color .25s var(--ease), box-shadow .25s var(--ease);
+}
+.field input:focus, .field textarea:focus {
+  outline: none; border-color: var(--plum); box-shadow: 0 0 0 3px rgba(74,30,61,.1);
+}
+.field input::placeholder, .field textarea::placeholder { color: #B7A6A0; }
+
+/* ---- Marquee (Werte-Laufband) ----------------------------------- */
+.marquee { overflow: hidden; white-space: nowrap; }
+.marquee__track { display: inline-flex; gap: 3rem; animation: marquee 32s linear infinite; }
+.marquee__track span {
+  font-family: var(--font-display); font-style: italic; font-size: clamp(1.6rem, 4vw, 3rem);
+  color: var(--plum); opacity: .75;
+}
+.marquee__track .dot { color: var(--gold); font-style: normal; }
+@keyframes marquee { to { transform: translateX(-50%); } }
+@media (prefers-reduced-motion: reduce) { .marquee__track { animation: none; } }
+
+/* ---- Scroll-Reveal ---------------------------------------------- */
+.reveal { opacity: 0; transform: translateY(28px); transition: opacity .9s var(--ease), transform .9s var(--ease); }
+.reveal.is-visible { opacity: 1; transform: none; }
+[data-delay="1"] { transition-delay: .08s; }
+[data-delay="2"] { transition-delay: .16s; }
+[data-delay="3"] { transition-delay: .24s; }
+[data-delay="4"] { transition-delay: .32s; }
+@media (prefers-reduced-motion: reduce) {
+  .reveal { opacity: 1 !important; transform: none !important; transition: none !important; }
+}
+
+/* ---- Hero (Dark / Shader) --------------------------------------- */
+.hero-dark { background-color: var(--plum-deep); color: var(--bg); }
+
+/* Container für den WebGL-Shader; trägt zugleich den CSS-Fallback-Verlauf,
+   falls Three.js/WebGL nicht lädt. */
+.hero-shader {
+  position: absolute; inset: 0; z-index: 0; overflow: hidden;
+  background:
+    radial-gradient(62% 62% at 76% 24%, rgba(110,52,88,.85), rgba(42,22,34,0) 70%),
+    radial-gradient(52% 52% at 18% 82%, rgba(201,162,75,.22), rgba(42,22,34,0) 68%),
+    radial-gradient(45% 45% at 60% 70%, rgba(232,196,196,.18), rgba(42,22,34,0) 70%),
+    var(--plum-deep);
+}
+.hero-shader canvas { display: block; width: 100% !important; height: 100% !important; }
+
+/* Verschleierung für Textlesbarkeit (links dunkler, rechts zeigt den Shader). */
+.hero-veil {
+  position: absolute; inset: 0; z-index: 1; pointer-events: none;
+  background:
+    linear-gradient(90deg, rgba(20,10,16,.80) 0%, rgba(20,10,16,.40) 46%, rgba(20,10,16,0) 78%),
+    linear-gradient(0deg, rgba(20,10,16,.55) 0%, rgba(20,10,16,0) 38%);
+}
+
+.eyebrow-light { color: var(--gold-soft); }
+.eyebrow-light::before, .eyebrow-light.center::after { background: var(--gold-soft); }
+
+/* Porträt-Rahmen & Platzhalter auf dunklem Grund */
+.framed-light::before { border-color: var(--gold-soft); }
+.img-ph-dark { background: linear-gradient(135deg, rgba(110,52,88,.55), rgba(42,22,34,.72)); }
+.img-ph-dark::after { color: var(--bg); border-color: rgba(250,244,242,.32); background: rgba(42,22,34,.35); }
+
+/* ---- Nav --------------------------------------------------------- */
+#nav {
+  transition: background-color .4s var(--ease), box-shadow .4s var(--ease), padding .4s var(--ease);
+}
+#nav.scrolled {
+  background: rgba(250,244,242,.88);
+  -webkit-backdrop-filter: blur(12px);
+  backdrop-filter: blur(12px);
+  box-shadow: 0 1px 0 var(--border);
+}
+.nav-link { font-size: 0.78rem; letter-spacing: 0.16em; text-transform: uppercase; font-weight: 500; }
+
+.wordmark { font-family: var(--font-display); font-weight: 700; letter-spacing: 0.22em; }
+
+/* Über dem dunklen Hero hell, nach dem Scrollen dunkel */
+#nav .wordmark, #nav .nav-link, #nav #menu-toggle { color: var(--bg); transition: color .4s var(--ease); }
+#nav.scrolled .wordmark, #nav.scrolled .nav-link, #nav.scrolled #menu-toggle { color: var(--plum-deep); }
+/* Glas-CTA über dem Hero, klassischer Plum-Button nach dem Scrollen */
+#nav:not(.scrolled) .btn-primary {
+  background: rgba(250,244,242,.12); border-color: rgba(250,244,242,.32); color: var(--bg);
+  -webkit-backdrop-filter: blur(6px); backdrop-filter: blur(6px);
+}
+#nav:not(.scrolled) .btn-primary:hover {
+  background: var(--gold); border-color: var(--gold); color: var(--plum-deep); box-shadow: none;
+}
+
+/* Mobile menu */
+#mobile-menu { transition: opacity .35s var(--ease), visibility .35s var(--ease); }
+#mobile-menu.hidden-menu { opacity: 0; visibility: hidden; pointer-events: none; }
+
+/* Vertikales Section-Label (Editorial-Detail) */
+.side-index {
+  writing-mode: vertical-rl; font-size: 0.66rem; letter-spacing: 0.3em; text-transform: uppercase;
+  color: var(--muted-fg);
+}
+
+/* Sicherstellen, dass Inhalt über dem Grain liegt */
+main, nav, footer { position: relative; z-index: 2; }
