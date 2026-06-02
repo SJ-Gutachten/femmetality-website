@@ -512,5 +512,23 @@ body::before {
 .legal-prose li { margin-bottom: 0.4rem; }
 .legal-prose .addr { font-style: normal; }
 
+/* ---- Social-Buttons im Footer (Folge mir) ---------------------- */
+.social-pill {
+  display: inline-flex; align-items: center; gap: 0.6rem;
+  padding: 0.6rem 1.1rem; border-radius: 999px;
+  border: 1px solid rgba(255,255,255,.22);
+  background: rgba(255,255,255,.06);
+  color: rgba(244,239,230,.88);
+  font-family: var(--font-body); font-size: 0.86rem; font-weight: 500;
+  letter-spacing: 0.02em;
+  transition: background-color .25s var(--ease), color .25s var(--ease),
+              border-color .25s var(--ease), transform .25s var(--ease);
+}
+.social-pill svg { flex: none; }
+.social-pill:hover {
+  background: var(--gold-soft); border-color: var(--gold-soft);
+  color: var(--ink); transform: translateY(-1px);
+}
+
 /* Sicherstellen, dass Inhalt über dem Grain liegt */
 main, nav, footer { position: relative; z-index: 2; }
