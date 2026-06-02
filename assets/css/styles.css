@@ -527,5 +527,19 @@ body::before {
   color: var(--ink); transform: translateY(-2px);
 }
 
+/* Helle Variante auf creme Hintergrund (Kontaktbereich) */
+.social-pill-light {
+  display: inline-grid; place-items: center;
+  width: 3rem; height: 3rem; border-radius: 999px;
+  border: 1px solid var(--line);
+  color: var(--accent);
+  transition: background-color .25s var(--ease), color .25s var(--ease),
+              border-color .25s var(--ease), transform .25s var(--ease);
+}
+.social-pill-light:hover {
+  background: var(--accent); border-color: var(--accent);
+  color: var(--bg); transform: translateY(-2px);
+}
+
 /* Sicherstellen, dass Inhalt über dem Grain liegt */
 main, nav, footer { position: relative; z-index: 2; }
