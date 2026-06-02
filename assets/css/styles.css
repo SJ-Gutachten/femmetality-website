@@ -1,5 +1,5 @@
 /* =================================================================
-   FEMMETALITY — Editorial Feminine, Bold & Timeless
+   FEMMETALITY — Forest & Bone · Seriös, ruhig & hochwertig
    Bespoke Layer (Tokens · Fonts · Components · Motion)
    Tailwind (Play CDN) liefert die Utilities; diese Datei den Charakter.
    ================================================================= */
@@ -9,18 +9,31 @@
 
 /* ---- Design Tokens ---------------------------------------------- */
 :root {
-  --bg:         #FAF4F2;   /* warmes Creme */
-  --bg-2:       #F3E9E5;   /* leicht tieferes Creme für Sektionswechsel */
-  --plum:       #4A1E3D;   /* Leitfarbe Aubergine */
-  --plum-deep:  #2A1622;   /* Text / tiefste Fläche */
-  --plum-soft:  #6E3458;   /* helleres Plum für Verläufe */
-  --gold:       #C9A24B;   /* Akzent */
-  --gold-soft:  #E0C57F;
-  --blush:      #E8C4C4;   /* weiche Flächen */
-  --blush-soft: #F5E2E2;
-  --cream-card: #FFFDFB;   /* Karten */
-  --muted-fg:   #6B5560;   /* gedämpfter Text */
-  --border:     #E8DAD3;   /* zarte Rahmen */
+  /* ── Forest & Bone ─────────────────────────────────────────────
+     Seriös, vertrauenswürdig, ruhige Kraft. Premium-Apotheke,
+     kein Yoga-Retreat. Im Zweifel immer Grün — Messing ist Garnitur. */
+  --bg-primary:  #f4efe6;  /* warmes Knochenweiß, Haupthintergrund */
+  --bg-warm:     #e8dfd0;  /* zweite Ebene für Section-Wechsel */
+  --bg-deep:     #1a2e25;  /* tiefes Waldgrün, dunkle Sections */
+  --ink:         #1a2e25;  /* Haupttext, tiefes Waldgrün */
+  --ink-soft:    #5a6b62;  /* Sekundärtext, gedämpftes Salbei */
+  --accent:      #2d4a3e;  /* mittleres Waldgrün — Headlines & Italics */
+  --accent-warm: #8b6f47;  /* gedämpftes Messing — nur Garnitur */
+  --line:        #d4c8b5;  /* dezente Trennlinien */
+
+  /* Alias auf bestehende Token-Namen, damit alle Utilities & Komponenten greifen */
+  --bg:         var(--bg-primary);
+  --bg-2:       var(--bg-warm);
+  --plum:       var(--accent);      /* war Aubergine → mittleres Waldgrün */
+  --plum-deep:  var(--ink);         /* war Tiefst-Plum → tiefes Waldgrün */
+  --plum-soft:  #34564a;            /* etwas helleres Grün für Verläufe */
+  --gold:       var(--accent);      /* war Gold → Grün (Akzent) */
+  --gold-soft:  #c2a878;            /* helles Messing, nur auf dunklem Grund */
+  --blush:      #c2a878;            /* warmer Akzent auf Dunkel */
+  --blush-soft: #efe6d6;
+  --cream-card: #faf6ee;   /* Karten */
+  --muted-fg:   var(--ink-soft);
+  --border:     var(--line);
 
   --font-display: 'Playfair Display', 'Times New Roman', Georgia, serif;
   --font-body:    'Montserrat', 'Helvetica Neue', Arial, sans-serif;
@@ -121,20 +134,23 @@ body::before {
 }
 .btn:focus-visible { outline: 2px solid var(--gold); outline-offset: 3px; }
 
-.btn-primary { background: var(--plum); color: var(--bg); }
-.btn-primary:hover { background: var(--plum-deep); transform: translateY(-2px); box-shadow: 0 14px 30px -12px rgba(42,22,34,.55); }
+/* Primär: tiefes Grün auf Knochenweiß, Hover → mittleres Grün */
+.btn-primary { background: var(--ink); color: var(--bg); }
+.btn-primary:hover { background: var(--accent); transform: translateY(-2px); box-shadow: 0 14px 30px -12px rgba(26,46,37,.5); }
 
-.btn-ghost { background: transparent; color: var(--plum-deep); border-color: var(--plum-deep); }
-.btn-ghost:hover { background: var(--plum-deep); color: var(--bg); transform: translateY(-2px); }
+/* Sekundär: Outline in dunklem Grün */
+.btn-ghost { background: transparent; color: var(--ink); border-color: var(--ink); }
+.btn-ghost:hover { background: var(--ink); color: var(--bg); transform: translateY(-2px); }
 
-.btn-gold { background: var(--gold); color: var(--plum-deep); }
-.btn-gold:hover { background: var(--gold-soft); transform: translateY(-2px); box-shadow: 0 14px 30px -12px rgba(201,162,75,.6); }
+/* CTA auf dunklem Grund: heller Knochen-Button mit grünem Text */
+.btn-gold { background: var(--bg); color: var(--ink); }
+.btn-gold:hover { background: var(--bg-2); transform: translateY(-2px); box-shadow: 0 14px 30px -12px rgba(26,46,37,.35); }
 
-/* Auf dunklen (Plum-)Flächen */
-.on-dark .btn-ghost { color: var(--bg); border-color: rgba(250,244,242,.45); }
-.on-dark .btn-ghost:hover { background: var(--bg); color: var(--plum-deep); border-color: var(--bg); }
+/* Auf dunklen (Waldgrün-)Flächen */
+.on-dark .btn-ghost { color: var(--bg); border-color: rgba(244,239,230,.45); }
+.on-dark .btn-ghost:hover { background: var(--bg); color: var(--ink); border-color: var(--bg); }
 
-/* Link mit animierter Goldlinie */
+/* Link mit animierter Akzentlinie */
 .link-underline { position: relative; }
 .link-underline::after {
   content: ""; position: absolute; left: 0; bottom: -4px; height: 1px; width: 100%;
@@ -153,7 +169,7 @@ body::before {
   overflow: hidden;
   border-radius: 4px;
   background:
-    linear-gradient(135deg, rgba(110,52,88,.20), rgba(232,196,196,.35)),
+    linear-gradient(135deg, rgba(45,74,62,.20), rgba(139,111,71,.16)),
     var(--bg-2);
   background-size: cover;
   background-position: center;
@@ -169,24 +185,24 @@ body::before {
   font-size: 0.62rem;
   letter-spacing: 0.26em;
   text-transform: uppercase;
-  color: var(--plum);
+  color: var(--accent);
   opacity: 0.55;
   padding: 0.5rem 0.9rem;
-  border: 1px solid rgba(74,30,61,.3);
+  border: 1px solid rgba(45,74,62,.3);
   border-radius: 999px;
-  background: rgba(255,253,251,.6);
+  background: rgba(244,239,230,.7);
 }
 .img-ph[style*="url"]::after { display: none; }
 .ph-fill { width: 100%; height: 100%; object-fit: cover; display: block; }
 
-/* Dekorativer Goldrahmen-Offset für Porträts */
+/* Dekorativer Messing-Rahmen-Offset für Porträts (sparsame Garnitur) */
 .framed { position: relative; }
 .framed::before {
   content: "";
   position: absolute;
   inset: 0;
   translate: 18px 18px;
-  border: 1px solid var(--gold);
+  border: 1px solid var(--accent-warm);
   border-radius: 4px;
   z-index: -1;
   transition: translate .5s var(--ease);
@@ -200,7 +216,7 @@ body::before {
   border-radius: 6px;
   transition: transform .4s var(--ease), box-shadow .4s var(--ease), border-color .4s var(--ease);
 }
-.card:hover { transform: translateY(-6px); box-shadow: 0 28px 50px -30px rgba(42,22,34,.4); border-color: var(--blush); }
+.card:hover { transform: translateY(-6px); box-shadow: 0 28px 50px -30px rgba(26,46,37,.4); border-color: var(--accent-warm); }
 
 .pillar-num {
   font-family: var(--font-display);
@@ -211,10 +227,10 @@ body::before {
 }
 
 /* Angebots-Karte hervorgehoben */
-.card-feature { background: var(--plum); color: var(--bg); border-color: var(--plum); }
+.card-feature { background: var(--bg-deep); color: var(--bg); border-color: var(--bg-deep); }
 .card-feature .price-meta,
-.card-feature .feat-item { color: rgba(250,244,242,.82); }
-.card-feature:hover { box-shadow: 0 34px 60px -28px rgba(42,22,34,.7); }
+.card-feature .feat-item { color: rgba(244,239,230,.82); }
+.card-feature:hover { box-shadow: 0 34px 60px -28px rgba(26,46,37,.7); }
 
 .feat-item { display: flex; gap: 0.7rem; align-items: flex-start; color: var(--muted-fg); font-size: 0.92rem; }
 .feat-item svg { flex: none; margin-top: 0.28rem; color: var(--gold); }
@@ -257,9 +273,9 @@ body::before {
   color: var(--plum-deep); transition: border-color .25s var(--ease), box-shadow .25s var(--ease);
 }
 .field input:focus, .field textarea:focus {
-  outline: none; border-color: var(--plum); box-shadow: 0 0 0 3px rgba(74,30,61,.1);
+  outline: none; border-color: var(--accent); box-shadow: 0 0 0 3px rgba(45,74,62,.12);
 }
-.field input::placeholder, .field textarea::placeholder { color: #B7A6A0; }
+.field input::placeholder, .field textarea::placeholder { color: #a7ab9c; }
 
 /* ---- Marquee (Werte-Laufband) ----------------------------------- */
 .marquee { overflow: hidden; white-space: nowrap; }
@@ -268,7 +284,7 @@ body::before {
   font-family: var(--font-display); font-style: italic; font-size: clamp(1.6rem, 4vw, 3rem);
   color: var(--plum); opacity: .75;
 }
-.marquee__track .dot { color: var(--gold); font-style: normal; }
+.marquee__track .dot { color: var(--accent-warm); font-style: normal; }
 @keyframes marquee { to { transform: translateX(-50%); } }
 @media (prefers-reduced-motion: reduce) { .marquee__track { animation: none; } }
 
@@ -291,10 +307,10 @@ body::before {
 .hero-shader {
   position: absolute; inset: 0; z-index: 0; overflow: hidden;
   background:
-    radial-gradient(62% 62% at 76% 24%, rgba(110,52,88,.85), rgba(42,22,34,0) 70%),
-    radial-gradient(52% 52% at 18% 82%, rgba(201,162,75,.22), rgba(42,22,34,0) 68%),
-    radial-gradient(45% 45% at 60% 70%, rgba(232,196,196,.18), rgba(42,22,34,0) 70%),
-    var(--plum-deep);
+    radial-gradient(62% 62% at 76% 24%, rgba(45,74,62,.85), rgba(26,46,37,0) 70%),
+    radial-gradient(52% 52% at 18% 82%, rgba(139,111,71,.22), rgba(26,46,37,0) 68%),
+    radial-gradient(45% 45% at 60% 70%, rgba(212,200,181,.16), rgba(26,46,37,0) 70%),
+    var(--bg-deep);
 }
 .hero-shader canvas { display: block; width: 100% !important; height: 100% !important; }
 
@@ -302,8 +318,8 @@ body::before {
 .hero-veil {
   position: absolute; inset: 0; z-index: 1; pointer-events: none;
   background:
-    linear-gradient(90deg, rgba(20,10,16,.80) 0%, rgba(20,10,16,.40) 46%, rgba(20,10,16,0) 78%),
-    linear-gradient(0deg, rgba(20,10,16,.55) 0%, rgba(20,10,16,0) 38%);
+    linear-gradient(90deg, rgba(12,22,17,.80) 0%, rgba(12,22,17,.40) 46%, rgba(12,22,17,0) 78%),
+    linear-gradient(0deg, rgba(12,22,17,.55) 0%, rgba(12,22,17,0) 38%);
 }
 
 .eyebrow-light { color: var(--gold-soft); }
@@ -311,15 +327,15 @@ body::before {
 
 /* Porträt-Rahmen & Platzhalter auf dunklem Grund */
 .framed-light::before { border-color: var(--gold-soft); }
-.img-ph-dark { background: linear-gradient(135deg, rgba(110,52,88,.55), rgba(42,22,34,.72)); }
-.img-ph-dark::after { color: var(--bg); border-color: rgba(250,244,242,.32); background: rgba(42,22,34,.35); }
+.img-ph-dark { background: linear-gradient(135deg, rgba(45,74,62,.55), rgba(26,46,37,.78)); }
+.img-ph-dark::after { color: var(--bg); border-color: rgba(244,239,230,.32); background: rgba(26,46,37,.4); }
 
 /* ---- Nav --------------------------------------------------------- */
 #nav {
   transition: background-color .4s var(--ease), box-shadow .4s var(--ease), padding .4s var(--ease);
 }
 #nav.scrolled {
-  background: rgba(250,244,242,.88);
+  background: rgba(244,239,230,.9);
   -webkit-backdrop-filter: blur(12px);
   backdrop-filter: blur(12px);
   box-shadow: 0 1px 0 var(--border);
@@ -329,15 +345,28 @@ body::before {
 .wordmark { font-family: var(--font-display); font-weight: 700; letter-spacing: 0.22em; }
 
 /* Über dem dunklen Hero hell, nach dem Scrollen dunkel */
-#nav .wordmark, #nav .nav-link, #nav #menu-toggle { color: var(--bg); transition: color .4s var(--ease); }
-#nav.scrolled .wordmark, #nav.scrolled .nav-link, #nav.scrolled #menu-toggle { color: var(--plum-deep); }
-/* Glas-CTA über dem Hero, klassischer Plum-Button nach dem Scrollen */
+#nav .wordmark, #nav .nav-link, #nav #menu-toggle, #nav .lang-switch { color: var(--bg); transition: color .4s var(--ease); }
+#nav.scrolled .wordmark, #nav.scrolled .nav-link, #nav.scrolled #menu-toggle, #nav.scrolled .lang-switch { color: var(--plum-deep); }
+
+/* ---- Sprach-Umschalter (Flagge) --------------------------------- */
+.lang-switch {
+  display: inline-flex; align-items: center; gap: 0.45rem;
+  font-family: var(--font-body); font-weight: 500;
+  font-size: 0.72rem; letter-spacing: 0.12em; text-transform: uppercase;
+  opacity: 0.9; transition: opacity .25s var(--ease);
+}
+.lang-switch:hover { opacity: 1; }
+.lang-switch .lang-flag {
+  width: 22px; height: 15px; display: block; border-radius: 2px;
+  box-shadow: 0 0 0 1px rgba(0,0,0,.10);
+}
+/* Glas-CTA über dem Hero, klassischer Grün-Button nach dem Scrollen */
 #nav:not(.scrolled) .btn-primary {
-  background: rgba(250,244,242,.12); border-color: rgba(250,244,242,.32); color: var(--bg);
+  background: rgba(244,239,230,.12); border-color: rgba(244,239,230,.32); color: var(--bg);
   -webkit-backdrop-filter: blur(6px); backdrop-filter: blur(6px);
 }
 #nav:not(.scrolled) .btn-primary:hover {
-  background: var(--gold); border-color: var(--gold); color: var(--plum-deep); box-shadow: none;
+  background: var(--bg); border-color: var(--bg); color: var(--ink); box-shadow: none;
 }
 
 /* Mobile menu */
@@ -349,6 +378,139 @@ body::before {
   writing-mode: vertical-rl; font-size: 0.66rem; letter-spacing: 0.3em; text-transform: uppercase;
   color: var(--muted-fg);
 }
+
+/* ---- Trailer-Vorschaukarte (Rise & Shine) ----------------------- */
+.trailer-preview {
+  position: relative;
+  display: block;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  border-radius: 4px;
+  overflow: hidden;
+  cursor: pointer;
+  text-decoration: none;
+  /* Markenverlauf als Fallback, solange das Vorschaubild fehlt */
+  background: linear-gradient(135deg, #2d4a3e, #1a2e25);
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+.trailer-preview:hover {
+  transform: scale(1.01);
+  box-shadow: 0 20px 50px rgba(26, 46, 37, 0.15);
+}
+
+.trailer-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* Fallback, falls der src leer/nicht gesetzt ist */
+.trailer-image:not([src]),
+.trailer-image[src=""] {
+  background: linear-gradient(135deg, #2d4a3e, #1a2e25);
+}
+
+.trailer-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(26, 46, 37, 0.1) 0%, rgba(26, 46, 37, 0.35) 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.3s ease;
+}
+
+.trailer-preview:hover .trailer-overlay {
+  background: linear-gradient(180deg, rgba(26, 46, 37, 0.2) 0%, rgba(26, 46, 37, 0.45) 100%);
+}
+
+.trailer-play-button {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background: #2d4a3e;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-left: 6px;
+  box-shadow: 0 10px 30px rgba(26, 46, 37, 0.4);
+  transition: transform 0.3s ease, background 0.3s ease;
+}
+
+.trailer-preview:hover .trailer-play-button {
+  transform: scale(1.08);
+  background: #1a2e25;
+}
+
+.trailer-caption {
+  margin-top: 12px;
+  font-size: 0.85rem;
+  color: #2d4a3e;
+  text-align: left;
+  letter-spacing: 0.02em;
+}
+
+/* ---- Video-Testimonial-Section --------------------------------- */
+.testimonial-video {
+  background: var(--bg-warm);
+  padding: 6rem 1.5rem;
+  text-align: center;
+}
+
+.testimonial-preview {
+  max-width: 720px;
+  margin: 3rem auto 2rem;
+}
+
+/* Hochformat-Foto im 16:9-Rahmen: Ausschnitt auf das Gesicht (oben) ziehen */
+.testimonial-preview .trailer-image {
+  object-position: center 22%;
+}
+
+.testimonial-quote {
+  max-width: 640px;
+  margin: 0 auto;
+  padding: 0;
+  border: none;
+}
+
+.testimonial-quote p {
+  font-family: var(--font-accent);
+  font-size: clamp(1.4rem, 2.5vw, 1.8rem);
+  font-style: italic;
+  line-height: 1.5;
+  color: var(--ink);
+  margin-bottom: 1.2rem;
+}
+
+.testimonial-quote cite {
+  display: block;
+  font-family: var(--font-body);
+  font-style: normal;
+  font-size: 0.85rem;
+  letter-spacing: 0.1em;
+  color: var(--ink-soft);
+  text-transform: none;
+}
+
+/* ---- Rechtsseiten (Impressum / Datenschutz) -------------------- */
+.legal-prose { color: var(--ink-soft); line-height: 1.8; font-size: 0.98rem; }
+.legal-prose h2 {
+  font-family: var(--font-display); font-weight: 700; color: var(--ink);
+  font-size: 1.3rem; line-height: 1.2; margin: 2.4rem 0 0.7rem;
+}
+.legal-prose h3 {
+  font-family: var(--font-body); font-weight: 600; color: var(--ink);
+  font-size: 1rem; margin: 1.5rem 0 0.4rem;
+}
+.legal-prose p { margin-bottom: 1rem; }
+.legal-prose a { color: var(--accent); text-decoration: underline; text-underline-offset: 2px; }
+.legal-prose strong { color: var(--ink); font-weight: 600; }
+.legal-prose ul { list-style: disc; padding-left: 1.4rem; margin-bottom: 1rem; }
+.legal-prose li { margin-bottom: 0.4rem; }
+.legal-prose .addr { font-style: normal; }
 
 /* Sicherstellen, dass Inhalt über dem Grain liegt */
 main, nav, footer { position: relative; z-index: 2; }

@@ -11,6 +11,10 @@
   <meta property="og:description" content="Mentoring für Frauen, die mehr vom Leben wollen. Feminin. Unapologetic. Zeitlos." />
   <meta property="og:type" content="website" />
 
+  <!-- Sprachverknüpfung / language alternates -->
+  <link rel="alternate" hreflang="de" href="index.html" />
+  <link rel="alternate" hreflang="en" href="en.html" />
+
   <!-- Tailwind Play CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
@@ -18,11 +22,12 @@
       theme: {
         extend: {
           colors: {
-            bg: '#FAF4F2', bg2: '#F3E9E5',
-            plum: '#4A1E3D', plumDeep: '#2A1622', plumSoft: '#6E3458',
-            gold: '#C9A24B', goldSoft: '#E0C57F',
-            blush: '#E8C4C4', blushSoft: '#F5E2E2',
-            creamCard: '#FFFDFB', mutedFg: '#6B5560', hair: '#E8DAD3',
+            /* Forest & Bone — seriös, vertrauenswürdig, ruhig */
+            bg: '#f4efe6', bg2: '#e8dfd0',
+            plum: '#2d4a3e', plumDeep: '#1a2e25', plumSoft: '#34564a',
+            gold: '#2d4a3e', goldSoft: '#c2a878',
+            blush: '#c2a878', blushSoft: '#efe6d6',
+            creamCard: '#faf6ee', mutedFg: '#5a6b62', hair: '#d4c8b5',
           },
           fontFamily: {
             display: ['"Playfair Display"', 'serif'],
@@ -42,6 +47,13 @@
   <script type="importmap">
     { "imports": { "three": "https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js" } }
   </script>
+
+  <!-- Zentrale Konfiguration — hier einmalig ändern, wirkt überall -->
+  <script>
+    const STRIPE_RISE_AND_SHINE = "https://buy.stripe.com/7sYaEZdcS1ku3CcbHN2Ry05";
+    const STRIPE_SOCIETY = "https://buy.stripe.com/eVq9AV7Sy9R00q08vB2Ry04";
+    const BUCHUNGS_LINK = "https://calendly.com/femmetality-30min/30min";
+  </script>
 </head>
 
 <body class="font-body antialiased">
@@ -56,11 +68,14 @@
         <a href="#ueber" class="nav-link link-underline text-plumDeep/90">Über</a>
         <a href="#ansatz" class="nav-link link-underline text-plumDeep/90">Ansatz</a>
         <a href="#angebote" class="nav-link link-underline text-plumDeep/90">Angebote</a>
-        <a href="#stimmen" class="nav-link link-underline text-plumDeep/90">Stimmen</a>
         <a href="#kontakt" class="nav-link link-underline text-plumDeep/90">Kontakt</a>
       </div>
 
       <div class="flex items-center gap-3">
+        <a href="en.html" hreflang="en" class="lang-switch" aria-label="Switch to English">
+          <svg class="lang-flag" viewBox="0 0 60 30" preserveAspectRatio="none" aria-hidden="true"><rect width="60" height="30" fill="#012169"/><path d="M0,0 60,30 M60,0 0,30" stroke="#fff" stroke-width="6"/><path d="M0,0 60,30 M60,0 0,30" stroke="#C8102E" stroke-width="4"/><path d="M30,0 V30 M0,15 H60" stroke="#fff" stroke-width="10"/><path d="M30,0 V30 M0,15 H60" stroke="#C8102E" stroke-width="6"/></svg>
+          <span>EN</span>
+        </a>
         <a href="#" data-booking class="btn btn-primary hidden sm:inline-flex">Erstgespräch buchen</a>
         <button id="menu-toggle" class="lg:hidden p-2 -mr-2 text-plumDeep" aria-label="Menü öffnen" aria-expanded="false" aria-controls="mobile-menu">
           <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
@@ -75,7 +90,6 @@
     <a href="#ueber" class="mobile-link font-display text-3xl text-plumDeep">Über</a>
     <a href="#ansatz" class="mobile-link font-display text-3xl text-plumDeep">Ansatz</a>
     <a href="#angebote" class="mobile-link font-display text-3xl text-plumDeep">Angebote</a>
-    <a href="#stimmen" class="mobile-link font-display text-3xl text-plumDeep">Stimmen</a>
     <a href="#kontakt" class="mobile-link font-display text-3xl text-plumDeep">Kontakt</a>
     <a href="#" data-booking class="mobile-link btn btn-primary mt-4">Erstgespräch buchen</a>
     <button id="menu-close" class="absolute top-6 right-6 p-2 text-plumDeep" aria-label="Menü schließen">
@@ -102,7 +116,7 @@
           </h1>
           <p class="mt-7 max-w-xl text-lg md:text-xl text-bg/75 reveal" data-delay="2">
             Für Frauen, die sich verloren fühlen — und tief wissen, dass mehr für sie bestimmt ist.
-            Ich begleite dich, deine Stärke wiederzufinden: <span class="text-goldSoft font-medium">feminin, unapologetic, zeitlos.</span>
+            Ich begleite dich, deine Stärke wiederzufinden: <span class="text-goldSoft font-medium">feminin, frei, wundervoll.</span>
           </p>
           <div class="mt-10 flex flex-wrap items-center gap-4 reveal" data-delay="3">
             <a href="#" data-booking class="btn btn-gold">Erstgespräch buchen</a>
@@ -110,13 +124,13 @@
           </div>
           <div class="mt-12 flex items-center gap-8 reveal" data-delay="4">
             <div>
-              <div class="font-display text-3xl text-goldSoft">200+</div>
+              <div class="font-display text-3xl text-goldSoft">100+</div>
               <div class="text-xs tracking-widest uppercase text-bg/55 mt-1">begleitete Frauen</div>
             </div>
             <div class="w-px h-10 bg-white/20"></div>
             <div>
-              <div class="font-display text-3xl text-goldSoft">10 Jahre</div>
-              <div class="text-xs tracking-widest uppercase text-bg/55 mt-1">Erfahrung</div>
+              <div class="font-display text-3xl text-goldSoft">Seit 2019</div>
+              <div class="text-xs tracking-widest uppercase text-bg/55 mt-1">als Mentorin</div>
             </div>
           </div>
         </div>
@@ -125,7 +139,7 @@
           <!-- FOTO EINSETZEN: ersetze die <div class="img-ph"> durch
                <img src="assets/img/hero.jpg" alt="Femmetality" class="ph-fill"> innerhalb von .framed -->
           <div class="framed framed-light">
-            <div class="img-ph img-ph-dark aspect-[4/5] w-full" data-label="Dein Foto hier"></div>
+            <img src="assets/img/1.jpg" alt="Femmetality — persönliches Mentoring für Frauen" class="w-full aspect-[4/5] object-cover rounded block" />
           </div>
         </div>
 
@@ -183,9 +197,9 @@
     </section>
 
     <!-- ===================== MANIFEST / PULL-QUOTE ===================== -->
-    <section class="py-20 md:py-28 bg-plum on-dark text-bg overflow-hidden relative">
+    <section class="py-20 md:py-28 bg-plumDeep on-dark text-bg overflow-hidden relative">
       <div class="shell max-w-4xl text-center reveal">
-        <svg class="mx-auto mb-8 text-gold" width="46" height="46" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M7.5 5C5 6.5 3.5 9 3.5 12.5c0 2.7 1.7 4.5 4 4.5 2 0 3.5-1.5 3.5-3.5S9.6 10 7.8 10c-.4 0-.8.1-1.1.2.4-1.6 1.6-2.9 3-3.7L7.5 5Zm9 0C14 6.5 12.5 9 12.5 12.5c0 2.7 1.7 4.5 4 4.5 2 0 3.5-1.5 3.5-3.5S18.6 10 16.8 10c-.4 0-.8.1-1.1.2.4-1.6 1.6-2.9 3-3.7L16.5 5Z"/></svg>
+        <svg class="mx-auto mb-8 text-goldSoft" width="46" height="46" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M7.5 5C5 6.5 3.5 9 3.5 12.5c0 2.7 1.7 4.5 4 4.5 2 0 3.5-1.5 3.5-3.5S9.6 10 7.8 10c-.4 0-.8.1-1.1.2.4-1.6 1.6-2.9 3-3.7L7.5 5Zm9 0C14 6.5 12.5 9 12.5 12.5c0 2.7 1.7 4.5 4 4.5 2 0 3.5-1.5 3.5-3.5S18.6 10 16.8 10c-.4 0-.8.1-1.1.2.4-1.6 1.6-2.9 3-3.7L16.5 5Z"/></svg>
         <p class="pull-quote text-bg">
           „Du musst dich nicht neu erfinden. Du darfst dich
           <span class="text-goldSoft">erinnern</span> — an die Frau, die du immer warst.“
@@ -200,7 +214,7 @@
         <div class="lg:col-span-5 order-2 lg:order-1 reveal">
           <!-- FOTO EINSETZEN: siehe README -->
           <div class="framed">
-            <div class="img-ph aspect-[4/5] w-full" data-label="Dein Foto hier"></div>
+            <img src="assets/img/2.jpg" alt="Über Femmetality — deine Mentorin" class="w-full aspect-[4/5] object-cover rounded block" />
           </div>
         </div>
 
@@ -232,7 +246,7 @@
             </div>
             <div class="flex items-center gap-3 text-sm text-plumDeep">
               <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" class="text-gold"><path d="m20 6-11 11-5-5"/></svg>
-              Über 200 begleitete Frauen
+              100+ begleitete Frauen
             </div>
           </div>
         </div>
@@ -256,7 +270,7 @@
           <article class="card p-8 md:p-10 reveal" data-delay="1">
             <div class="flex items-center justify-between mb-6">
               <span class="pillar-num">I</span>
-              <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#C9A24B" stroke-width="1.2"><path d="M12 21s-7-4.6-9.3-9C1.2 8.8 2.8 5.5 6 5.5c2 0 3.2 1.2 4 2.4.8-1.2 2-2.4 4-2.4 3.2 0 4.8 3.3 3.3 6.5C19 16.4 12 21 12 21Z"/></svg>
+              <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#2d4a3e" stroke-width="1.2"><path d="M12 21s-7-4.6-9.3-9C1.2 8.8 2.8 5.5 6 5.5c2 0 3.2 1.2 4 2.4.8-1.2 2-2.4 4-2.4 3.2 0 4.8 3.3 3.3 6.5C19 16.4 12 21 12 21Z"/></svg>
             </div>
             <h3 class="font-display text-2xl text-plumDeep">Feminität</h3>
             <p class="mt-4 text-mutedFg text-[0.95rem]">
@@ -269,7 +283,7 @@
           <article class="card p-8 md:p-10 reveal" data-delay="2">
             <div class="flex items-center justify-between mb-6">
               <span class="pillar-num">II</span>
-              <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#C9A24B" stroke-width="1.2"><path d="M13 2 4.5 13H11l-1 9 8.5-11H12l1-9Z"/></svg>
+              <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#2d4a3e" stroke-width="1.2"><path d="M13 2 4.5 13H11l-1 9 8.5-11H12l1-9Z"/></svg>
             </div>
             <h3 class="font-display text-2xl text-plumDeep">Unapologetic</h3>
             <p class="mt-4 text-mutedFg text-[0.95rem]">
@@ -282,7 +296,7 @@
           <article class="card p-8 md:p-10 reveal" data-delay="3">
             <div class="flex items-center justify-between mb-6">
               <span class="pillar-num">III</span>
-              <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#C9A24B" stroke-width="1.2"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
+              <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#2d4a3e" stroke-width="1.2"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
             </div>
             <h3 class="font-display text-2xl text-plumDeep">Zeitlos</h3>
             <p class="mt-4 text-mutedFg text-[0.95rem]">
@@ -294,6 +308,45 @@
       </div>
     </section>
 
+    <!-- ===================== VIDEO-TESTIMONIAL (ANJA) ===================== -->
+    <section class="testimonial-video" id="testimonial">
+
+      <div class="section-header reveal">
+        <span class="eyebrow center">Eine Stimme</span>
+        <h2 class="display-xl mt-6 text-plumDeep">Was Frauen mit Femmetality <em class="accent-italic text-plum">erleben.</em></h2>
+      </div>
+
+      <!-- Video-Vorschaukarte (gleiche Logik wie beim Trailer) -->
+      <!-- TODO: Vorschaubild als assets/img/testimonial-anja.jpg ablegen (1280×720, 16:9) -->
+      <a href="https://vimeo.com/1197454315"
+         target="_blank"
+         rel="noopener noreferrer"
+         class="trailer-preview testimonial-preview reveal"
+         aria-label="Testimonial von Anja ansehen">
+
+        <img src="assets/img/testimonial-anja.jpg"
+             alt="Anja von Novafaces — Testimonial Vorschau"
+             class="trailer-image" onerror="this.style.display='none'" />
+
+        <div class="trailer-overlay">
+          <div class="trailer-play-button">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none">
+              <path d="M8 5v14l11-7z" fill="#f4efe6"/>
+            </svg>
+          </div>
+        </div>
+      </a>
+
+      <!-- Zitat unter dem Video -->
+      <blockquote class="testimonial-quote reveal">
+        <p>„Früher war ich so schüchtern, ich hätte mich nie getraut, vor anderen zu stehen.
+        Heute halte ich meine eigenen Schulungen in meinem eigenen Laden. Femmetality hat
+        mich in die Sichtbarkeit geführt."</p>
+        <cite>— Anja, Inhaberin von Novafaces, München</cite>
+      </blockquote>
+
+    </section>
+
     <!-- ===================== ANGEBOTE ===================== -->
     <section id="angebote" class="py-24 md:py-32">
       <div class="shell">
@@ -301,122 +354,147 @@
           <span class="eyebrow">Angebote</span>
           <h2 class="display-xl mt-6 text-plumDeep">Wie wir zusammen arbeiten.</h2>
           <p class="mt-6 text-mutedFg">
-            Drei Wege, deinen eigenen zu finden — vom intensiven 1:1-Mentoring bis zur Gemeinschaft
-            gleichgesinnter Frauen.
+            Drei Wege, deinen eigenen zu finden — vom ersten Klarheits-Moment bis zur tiefen Transformation.
           </p>
         </div>
 
-        <div class="mt-14 grid lg:grid-cols-3 gap-6 items-stretch">
-          <!-- Paket 1 -->
+        <!-- ───────── BEREICH 1 — Der erste Schritt (Einstieg) ───────── -->
+        <div class="mt-14 reveal">
+          <span class="eyebrow">Der erste Schritt</span>
+        </div>
+        <article class="card mt-8 p-8 md:p-10 grid md:grid-cols-12 gap-6 md:gap-10 items-center reveal" data-delay="1">
+          <div class="md:col-span-8">
+            <h3 class="font-display text-2xl md:text-3xl text-plumDeep">Femmetality Reset</h3>
+            <p class="price-meta mt-2 text-sm text-mutedFg">Einstieg · Einzelsession · 1:1</p>
+            <p class="mt-4 text-mutedFg text-[0.95rem] max-w-xl">
+              Für Frauen, die spüren: So wie bisher geht es nicht weiter. Eine intensive 1:1-Session,
+              die dir Klarheit über deine größte innere Blockade bringt — und einen ersten Perspektivwechsel.
+            </p>
+          </div>
+          <div class="md:col-span-4 flex flex-col items-start md:items-end gap-4">
+            <div class="font-display text-3xl text-plumDeep">197&nbsp;€</div>
+            <a href="#" onclick="window.open(BUCHUNGS_LINK, '_blank', 'noopener,noreferrer'); return false;" class="btn btn-primary w-full md:w-auto">Reset buchen</a>
+          </div>
+        </article>
+
+        <hr class="border-0 border-t border-hair my-16 md:my-20" />
+
+        <!-- ───────── BEREICH 2 — Die 1:1-Reise (Premium-Pakete) ───────── -->
+        <div class="reveal">
+          <span class="eyebrow">Persönliche Begleitung</span>
+        </div>
+        <div class="mt-10 grid lg:grid-cols-3 gap-6 items-stretch">
+
+          <!-- Femmetality Core -->
           <article class="card p-8 md:p-10 flex flex-col reveal" data-delay="1">
-            <h3 class="font-display text-2xl text-plumDeep">1:1 Mentoring</h3>
-            <p class="price-meta mt-2 text-sm text-mutedFg">Intensiv · 3 Monate · individuell</p>
+            <h3 class="font-display text-2xl text-plumDeep">Femmetality Core</h3>
+            <p class="price-meta mt-2 text-sm text-mutedFg">6 Wochen · 1:1 Begleitung</p>
             <p class="mt-5 text-mutedFg text-[0.95rem]">
-              Dein geschützter Raum für tiefe Transformation — ganz auf dich und dein Leben zugeschnitten.
+              Für Frauen, die sich selbst führen und aufhören wollen, sich ständig zu hinterfragen.
             </p>
             <ul class="mt-6 space-y-3 flex-1">
               <li class="feat-item"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="m20 6-11 11-5-5"/></svg>Wöchentliche 1:1-Sessions</li>
-              <li class="feat-item"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="m20 6-11 11-5-5"/></svg>Persönlicher Fahrplan</li>
-              <li class="feat-item"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="m20 6-11 11-5-5"/></svg>Support zwischen den Terminen</li>
+              <li class="feat-item"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="m20 6-11 11-5-5"/></svg>Selbstwert, Grenzen &amp; Haltung</li>
+              <li class="feat-item"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="m20 6-11 11-5-5"/></svg>Auflösung limitierender Muster</li>
+              <li class="feat-item"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="m20 6-11 11-5-5"/></svg>Support zwischen den Sessions</li>
             </ul>
-            <a href="#" data-booking class="btn btn-ghost mt-8 w-full">Erstgespräch buchen</a>
+            <p class="mt-6 text-xs text-mutedFg">Im Erstgespräch besprechen wir Umfang &amp; Investition</p>
+            <button type="button" onclick="window.open(BUCHUNGS_LINK, '_blank', 'noopener,noreferrer'); return false;" class="btn btn-ghost mt-4 w-full">Kostenloses Erstgespräch buchen</button>
           </article>
 
-          <!-- Paket 2 (Feature) -->
+          <!-- Femmetality Elevation (BELIEBT · dunkle Karte) -->
           <article class="card card-feature p-8 md:p-10 flex flex-col reveal lg:-translate-y-4" data-delay="2">
             <div class="flex items-center justify-between">
-              <h3 class="font-display text-2xl text-bg">Signature Programm</h3>
-              <span class="text-[0.62rem] tracking-[0.22em] uppercase bg-gold text-plumDeep px-3 py-1 rounded-full">Beliebt</span>
+              <h3 class="font-display text-2xl text-bg">Femmetality Elevation</h3>
+              <span class="text-[0.62rem] tracking-[0.22em] uppercase bg-bg text-plumDeep px-3 py-1 rounded-full">Beliebt</span>
             </div>
-            <p class="price-meta mt-2 text-sm">Das Femmetality-Erlebnis · 6 Monate</p>
+            <p class="price-meta mt-2 text-sm">3 Monate · Intensive 1:1</p>
             <p class="mt-5 text-bg/80 text-[0.95rem]">
-              Mein umfassendstes Programm — der ganze Weg durch alle drei Säulen, begleitet und strukturiert.
+              Für Frauen, die tiefgreifende Veränderung und emotionale Stabilität suchen.
             </p>
             <ul class="mt-6 space-y-3 flex-1">
-              <li class="feat-item text-bg/90"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#E0C57F" stroke-width="1.6"><path d="m20 6-11 11-5-5"/></svg>Alles aus dem 1:1 Mentoring</li>
-              <li class="feat-item text-bg/90"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#E0C57F" stroke-width="1.6"><path d="m20 6-11 11-5-5"/></svg>Workbook & Tools für jede Säule</li>
-              <li class="feat-item text-bg/90"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#E0C57F" stroke-width="1.6"><path d="m20 6-11 11-5-5"/></svg>Voxer-Support & ein Retreat-Tag</li>
+              <li class="feat-item text-bg/90"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#c2a878" stroke-width="1.6"><path d="m20 6-11 11-5-5"/></svg>Intensive 1:1 Sessions</li>
+              <li class="feat-item text-bg/90"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#c2a878" stroke-width="1.6"><path d="m20 6-11 11-5-5"/></svg>Tiefe Identitätsarbeit</li>
+              <li class="feat-item text-bg/90"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#c2a878" stroke-width="1.6"><path d="m20 6-11 11-5-5"/></svg>Integration in Alltag &amp; Beziehungen</li>
+              <li class="feat-item text-bg/90"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#c2a878" stroke-width="1.6"><path d="m20 6-11 11-5-5"/></svg>Kontinuierliche Begleitung</li>
             </ul>
-            <a href="#" data-booking class="btn btn-gold mt-8 w-full">Platz sichern</a>
+            <p class="mt-6 text-xs text-bg/60">Im Erstgespräch besprechen wir Umfang &amp; Investition</p>
+            <button type="button" onclick="window.open(BUCHUNGS_LINK, '_blank', 'noopener,noreferrer'); return false;" class="btn btn-gold mt-4 w-full">Kostenloses Erstgespräch buchen</button>
           </article>
 
-          <!-- Paket 3 -->
+          <!-- Femmetality Mastery -->
           <article class="card p-8 md:p-10 flex flex-col reveal" data-delay="3">
-            <h3 class="font-display text-2xl text-plumDeep">Circle &amp; Community</h3>
-            <p class="price-meta mt-2 text-sm text-mutedFg">Gruppe · monatlich · online</p>
+            <h3 class="font-display text-2xl text-plumDeep">Femmetality Mastery</h3>
+            <p class="price-meta mt-2 text-sm text-mutedFg">6 Monate · High-Level 1:1</p>
             <p class="mt-5 text-mutedFg text-[0.95rem]">
-              Wachse in der Gemeinschaft gleichgesinnter Frauen — mit Live-Calls, Impulsen und echtem Halt.
+              Für Frauen, die ihr Leben von innen nach außen neu ausrichten wollen.
             </p>
             <ul class="mt-6 space-y-3 flex-1">
-              <li class="feat-item"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="m20 6-11 11-5-5"/></svg>Monatliche Gruppen-Calls</li>
-              <li class="feat-item"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="m20 6-11 11-5-5"/></svg>Geschützte Community</li>
-              <li class="feat-item"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="m20 6-11 11-5-5"/></svg>Monatlich kündbar</li>
+              <li class="feat-item"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="m20 6-11 11-5-5"/></svg>Persönliche High-Level-Begleitung</li>
+              <li class="feat-item"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="m20 6-11 11-5-5"/></svg>Arbeit auf Identitäts- &amp; Entscheidungsebene</li>
+              <li class="feat-item"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="m20 6-11 11-5-5"/></svg>Tiefe Integration in alle Lebensbereiche</li>
+              <li class="feat-item"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="m20 6-11 11-5-5"/></svg>Exklusiver, persönlicher Zugang</li>
             </ul>
-            <a href="#" data-booking class="btn btn-ghost mt-8 w-full">Dabei sein</a>
+            <p class="mt-6 text-xs text-mutedFg">Im Erstgespräch besprechen wir Umfang &amp; Investition</p>
+            <button type="button" onclick="window.open(BUCHUNGS_LINK, '_blank', 'noopener,noreferrer'); return false;" class="btn btn-ghost mt-4 w-full">Kostenloses Erstgespräch buchen</button>
           </article>
         </div>
-      </div>
-    </section>
 
-    <!-- ===================== STIMMEN ===================== -->
-    <section id="stimmen" class="py-24 md:py-32 bg-bg2/70 border-y border-hair">
-      <div class="shell">
-        <div class="max-w-2xl reveal">
-          <span class="eyebrow">Stimmen</span>
-          <h2 class="display-xl mt-6 text-plumDeep">Frauen, die zu sich gefunden haben.</h2>
+        <hr class="border-0 border-t border-hair my-16 md:my-20" />
+
+        <!-- ───────── BEREICH 3 — In deinem Tempo (Selbstlern & Community) ───────── -->
+        <div class="reveal">
+          <span class="eyebrow">Lieber selbstständig?</span>
         </div>
+        <div class="mt-10 grid lg:grid-cols-2 gap-6 items-stretch">
 
-        <div class="mt-14 grid md:grid-cols-3 gap-6">
-          <figure class="card p-8 reveal" data-delay="1">
-            <div class="flex gap-1 text-gold mb-5" aria-label="5 von 5 Sternen">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="m12 2 3 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.9 21l1.2-6.8-5-4.9 6.9-1L12 2Z"/></svg>
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="m12 2 3 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.9 21l1.2-6.8-5-4.9 6.9-1L12 2Z"/></svg>
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="m12 2 3 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.9 21l1.2-6.8-5-4.9 6.9-1L12 2Z"/></svg>
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="m12 2 3 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.9 21l1.2-6.8-5-4.9 6.9-1L12 2Z"/></svg>
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="m12 2 3 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.9 21l1.2-6.8-5-4.9 6.9-1L12 2Z"/></svg>
+          <!-- Rise & Shine (Onlinekurs mit Vimeo-Trailer) -->
+          <article class="card p-6 md:p-8 grid md:grid-cols-2 gap-6 md:gap-8 items-center reveal" data-delay="1">
+            <div>
+              <!-- Trailer öffnet direkt auf Vimeo in neuem Tab. -->
+              <a href="https://vimeo.com/1062816782" target="_blank" rel="noopener noreferrer" class="trailer-preview" aria-label="Rise and Shine Trailer ansehen">
+                <img src="assets/img/6.jpg" alt="Rise and Shine — Trailer Vorschau" class="trailer-image" onerror="this.style.display='none'" />
+                <div class="trailer-overlay">
+                  <div class="trailer-play-button">
+                    <svg width="32" height="32" viewBox="0 0 24 24" fill="none">
+                      <path d="M8 5v14l11-7z" fill="#f4efe6"/>
+                    </svg>
+                  </div>
+                </div>
+              </a>
+              <p class="trailer-caption">▶ Trailer ansehen · ca. 2 Min Vorschau</p>
             </div>
-            <blockquote class="font-accent italic text-xl text-plumDeep leading-snug">
-              „Zum ersten Mal seit Jahren fühle ich mich wieder wie ich selbst — nur mutiger.“
-            </blockquote>
-            <figcaption class="mt-6 flex items-center gap-3">
-              <span class="img-ph w-11 h-11 rounded-full" data-label=""></span>
-              <span><span class="block text-sm font-medium text-plumDeep">Lena M.</span><span class="block text-xs text-mutedFg">Signature Programm</span></span>
-            </figcaption>
-          </figure>
+            <div class="flex flex-col">
+              <h3 class="font-display text-2xl text-plumDeep">Rise &amp; Shine</h3>
+              <p class="price-meta mt-2 text-sm text-mutedFg">Onlinekurs · 12 Monate Zugang</p>
+              <p class="mt-4 text-mutedFg text-[0.95rem]">
+                Für Frauen, die aufhören wollen, nur zu funktionieren — und anfangen möchten, sich
+                selbst wieder zu fühlen. Alltagstauglich, tiefgehend, ehrlich — und ganz ohne Druck.
+              </p>
+              <div class="mt-5 font-display text-3xl text-plumDeep">400&nbsp;€</div>
+              <a href="#" onclick="window.open(STRIPE_RISE_AND_SHINE, '_blank', 'noopener,noreferrer'); return false;" class="btn btn-primary mt-5 w-full sm:w-auto">Kurs starten</a>
+            </div>
+          </article>
 
-          <figure class="card p-8 reveal" data-delay="2">
-            <div class="flex gap-1 text-gold mb-5" aria-label="5 von 5 Sternen">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="m12 2 3 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.9 21l1.2-6.8-5-4.9 6.9-1L12 2Z"/></svg>
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="m12 2 3 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.9 21l1.2-6.8-5-4.9 6.9-1L12 2Z"/></svg>
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="m12 2 3 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.9 21l1.2-6.8-5-4.9 6.9-1L12 2Z"/></svg>
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="m12 2 3 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.9 21l1.2-6.8-5-4.9 6.9-1L12 2Z"/></svg>
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="m12 2 3 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.9 21l1.2-6.8-5-4.9 6.9-1L12 2Z"/></svg>
-            </div>
-            <blockquote class="font-accent italic text-xl text-plumDeep leading-snug">
-              „Femmetality hat mir geholfen, aufzuhören, mich klein zu machen. Ich nehme endlich meinen Raum ein.“
-            </blockquote>
-            <figcaption class="mt-6 flex items-center gap-3">
-              <span class="img-ph w-11 h-11 rounded-full" data-label=""></span>
-              <span><span class="block text-sm font-medium text-plumDeep">Sophie K.</span><span class="block text-xs text-mutedFg">1:1 Mentoring</span></span>
-            </figcaption>
-          </figure>
-
-          <figure class="card p-8 reveal" data-delay="3">
-            <div class="flex gap-1 text-gold mb-5" aria-label="5 von 5 Sternen">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="m12 2 3 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.9 21l1.2-6.8-5-4.9 6.9-1L12 2Z"/></svg>
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="m12 2 3 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.9 21l1.2-6.8-5-4.9 6.9-1L12 2Z"/></svg>
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="m12 2 3 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.9 21l1.2-6.8-5-4.9 6.9-1L12 2Z"/></svg>
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="m12 2 3 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.9 21l1.2-6.8-5-4.9 6.9-1L12 2Z"/></svg>
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="m12 2 3 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.9 21l1.2-6.8-5-4.9 6.9-1L12 2Z"/></svg>
-            </div>
-            <blockquote class="font-accent italic text-xl text-plumDeep leading-snug">
-              „Eine Begleitung, die bleibt. Das, was ich hier gelernt habe, trägt mich bis heute.“
-            </blockquote>
-            <figcaption class="mt-6 flex items-center gap-3">
-              <span class="img-ph w-11 h-11 rounded-full" data-label=""></span>
-              <span><span class="block text-sm font-medium text-plumDeep">Marie T.</span><span class="block text-xs text-mutedFg">Circle &amp; Community</span></span>
-            </figcaption>
-          </figure>
+          <!-- Femmetality Society (monatliche Mitgliedschaft) -->
+          <article class="card p-8 md:p-10 flex flex-col reveal" data-delay="2">
+            <h3 class="font-display text-2xl text-plumDeep">Femmetality Society</h3>
+            <p class="price-meta mt-2 text-sm text-mutedFg">Monatliche Mitgliedschaft · Gruppe · online</p>
+            <p class="mt-5 text-mutedFg text-[0.95rem]">
+              Ein geschützter Raum für Frauen auf ihrer Reise. Einmal im Monat treffen wir uns live —
+              mit Impuls, geführter Übung und Zeit für deine Fragen. Damit du nicht allein gehst.
+            </p>
+            <ul class="mt-6 space-y-3 flex-1">
+              <li class="feat-item"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="m20 6-11 11-5-5"/></svg>1 Live-Call pro Monat (90 Min)</li>
+              <li class="feat-item"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="m20 6-11 11-5-5"/></svg>Themenschwerpunkt + offene Q&amp;A-Runde</li>
+              <li class="feat-item"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="m20 6-11 11-5-5"/></svg>Aufzeichnung jedes Calls</li>
+              <li class="feat-item"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="m20 6-11 11-5-5"/></svg>Reflexionsübung nach jedem Treffen</li>
+              <li class="feat-item"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="m20 6-11 11-5-5"/></svg>Monatlich kündbar — ohne Bindung</li>
+            </ul>
+            <div class="mt-6 font-display text-3xl text-plumDeep">39&nbsp;€ <span class="font-body text-base text-mutedFg">/ Monat</span></div>
+            <p class="mt-1 text-xs text-mutedFg">Keine Mindestlaufzeit</p>
+            <a href="#" onclick="window.open(STRIPE_SOCIETY, '_blank', 'noopener,noreferrer'); return false;" class="btn btn-ghost mt-5 w-full">Der Society beitreten</a>
+          </article>
         </div>
       </div>
     </section>
@@ -472,7 +550,7 @@
       <div class="shell">
 
         <!-- Buchungs-CTA-Band -->
-        <div class="bg-plum on-dark text-bg rounded-lg px-8 py-14 md:px-16 md:py-20 text-center relative overflow-hidden reveal">
+        <div class="bg-plumDeep on-dark text-bg rounded-lg px-8 py-14 md:px-16 md:py-20 text-center relative overflow-hidden reveal">
           <span class="eyebrow center !text-goldSoft justify-center">Dein nächster Schritt</span>
           <h2 class="display-xl mt-6 text-bg">Bereit, ganz du zu sein?</h2>
           <p class="mt-5 text-bg/75 max-w-xl mx-auto">
@@ -489,7 +567,7 @@
             <p class="mt-6 text-mutedFg max-w-sm">
               Lieber erst schreiben? Hinterlass mir eine Nachricht — ich melde mich persönlich bei dir.
             </p>
-            <a href="mailto:sjgutachten@gmail.com" class="link-underline inline-block mt-8 font-display text-xl text-plum">sjgutachten@gmail.com</a>
+            <a href="mailto:info@femmetality.com" class="link-underline inline-block mt-8 font-display text-xl text-plum">info@femmetality.com</a>
           </div>
 
           <div class="lg:col-span-7 reveal" data-delay="1">
@@ -534,20 +612,16 @@
           <ul class="space-y-2.5 text-sm">
             <li><a href="#ansatz" class="link-underline hover:text-bg">Ansatz</a></li>
             <li><a href="#angebote" class="link-underline hover:text-bg">Angebote</a></li>
-            <li><a href="#stimmen" class="link-underline hover:text-bg">Stimmen</a></li>
             <li><a href="#kontakt" class="link-underline hover:text-bg">Kontakt</a></li>
           </ul>
         </div>
         <div class="md:col-span-4">
           <h4 class="text-xs tracking-[0.25em] uppercase text-bg/50 font-body mb-4">Folge mir</h4>
           <div class="flex gap-3">
-            <a href="#" aria-label="Instagram" class="w-10 h-10 grid place-items-center rounded-full border border-white/15 hover:border-gold hover:text-gold transition-colors">
+            <a href="https://www.instagram.com/ffemmetality/" target="_blank" rel="noopener noreferrer" aria-label="Femmetality auf Instagram" class="w-10 h-10 grid place-items-center rounded-full border border-white/15 hover:border-goldSoft hover:text-goldSoft transition-colors">
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="3.5"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
             </a>
-            <a href="#" aria-label="LinkedIn" class="w-10 h-10 grid place-items-center rounded-full border border-white/15 hover:border-gold hover:text-gold transition-colors">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><rect x="3" y="3" width="18" height="18" rx="3"/><path d="M7 10v7M7 7v.01M11 17v-4a2 2 0 0 1 4 0v4M11 11v6" stroke-linecap="round"/></svg>
-            </a>
-            <a href="mailto:sjgutachten@gmail.com" aria-label="E-Mail" class="w-10 h-10 grid place-items-center rounded-full border border-white/15 hover:border-gold hover:text-gold transition-colors">
+            <a href="mailto:info@femmetality.com" target="_blank" rel="noopener noreferrer" aria-label="Femmetality per E-Mail kontaktieren" class="w-10 h-10 grid place-items-center rounded-full border border-white/15 hover:border-goldSoft hover:text-goldSoft transition-colors">
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg>
             </a>
           </div>
@@ -556,8 +630,8 @@
       <div class="pt-8 flex flex-col md:flex-row gap-4 justify-between items-center text-xs text-bg/45">
         <span>© <span id="year"></span> Femmetality. Alle Rechte vorbehalten.</span>
         <div class="flex gap-6">
-          <a href="#" class="link-underline hover:text-bg">Impressum</a>
-          <a href="#" class="link-underline hover:text-bg">Datenschutz</a>
+          <a href="impressum.html" class="link-underline hover:text-bg">Impressum</a>
+          <a href="datenschutz.html" class="link-underline hover:text-bg">Datenschutz</a>
         </div>
       </div>
     </div>

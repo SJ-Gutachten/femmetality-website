@@ -6,6 +6,8 @@ desktop.ini
 # Editor / temporäre Dateien
 *.log
 _preview*.png
+_shots/
+_tooling/
 
 # Abhängigkeiten (falls später hinzukommen)
 node_modules/

@@ -69,7 +69,7 @@ Alle Texte stehen direkt in **`index.html`** und sind deutsche Platzhalter, die 
 Such einfach nach der Stelle (z. B. Überschriften, Angebots-Pakete, FAQ, Testimonials) und
 überschreibe sie mit deinen echten Inhalten.
 
-- **E-Mail-Adresse:** aktuell `sjgutachten@gmail.com` — in `index.html` (Kontakt & Footer) und
+- **E-Mail-Adresse:** aktuell `info@femmetality.com` — in `index.html` (Kontakt & Footer) und
   in `assets/js/main.js` (Formular) ändern, falls gewünscht.
 - **Impressum & Datenschutz:** Im Footer sind Platzhalter-Links (`#`). Bitte mit echten,
   rechtlich erforderlichen Seiten/Inhalten verknüpfen.

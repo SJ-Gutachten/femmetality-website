@@ -1,12 +1,14 @@
 /* =================================================================
    FEMMETALITY — Interaktionen
    ----------------------------------------------------------------
-   ► BUCHUNGSLINK ÄNDERN: trage unten bei BOOKING_URL deinen echten
-     Link ein (z. B. deine Calendly-/Kontakt-URL). Alle Buttons mit
-     data-booking nutzen ihn automatisch.
+   ► BUCHUNGSLINK ÄNDERN: zentral im <head> der index.html bei
+     BUCHUNGS_LINK pflegen. Alle Buttons mit data-booking (Nav, Hero,
+     Mobile-Menü, CTA-Block) nutzen ihn automatisch — ebenso die
+     Erstgespräch-Buttons im Angebote-Abschnitt.
    ================================================================= */
 
-const BOOKING_URL = "#kontakt"; // TODO: z. B. "https://calendly.com/dein-name/erstgespraech"
+// Greift auf die zentrale Konfiguration aus dem <head> zu; Fallback: Anker zum Kontakt.
+const BOOKING_URL = (typeof BUCHUNGS_LINK !== "undefined") ? BUCHUNGS_LINK : "#kontakt";
 
 document.addEventListener("DOMContentLoaded", () => {
   const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
@@ -16,7 +18,7 @@ document.addEventListener("DOMContentLoaded", () => {
     el.setAttribute("href", BOOKING_URL);
     if (/^https?:/i.test(BOOKING_URL)) {
       el.setAttribute("target", "_blank");
-      el.setAttribute("rel", "noopener");
+      el.setAttribute("rel", "noopener noreferrer");
     }
   });
 
@@ -136,9 +138,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const subject = encodeURIComponent(`Anfrage von ${name} — Femmetality`);
     const body = encodeURIComponent(`Name: ${name}\nE-Mail: ${email}\n\n${message}`);
-    window.location.href = `mailto:sjgutachten@gmail.com?subject=${subject}&body=${body}`;
+    window.location.href = `mailto:info@femmetality.com?subject=${subject}&body=${body}`;
 
     note.textContent = "Dein E-Mail-Programm öffnet sich — danke für deine Nachricht!";
-    note.style.color = "#4A1E3D";
+    note.style.color = "#2d4a3e";
   });
 });

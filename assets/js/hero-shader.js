@@ -1,9 +1,9 @@
 /* =================================================================
    FEMMETALITY — Hero "Celestial Ink" Shader
-   Vanilla-Port (Three.js) des WebGL-Shaders, auf die Bold-Plum-Palette
-   abgestimmt: tiefes Aubergine → Blush/Rosé → warmes Gold-Highlight.
+   Vanilla-Port (Three.js) des WebGL-Shaders, auf die Forest-&-Bone-Palette
+   abgestimmt: tiefes Waldgrün → Salbei → gedämpftes Messing-Highlight.
    ----------------------------------------------------------------
-   ► FARBEN ÄNDERN: siehe c1 / c2 / blush / gold im Fragment-Shader unten.
+   ► FARBEN ÄNDERN: siehe c1 / c2 / sage / brass im Fragment-Shader unten.
    ► DEAKTIVIEREN: in index.html das <script type="module" ...hero-shader.js>
      entfernen — der Hero zeigt dann den CSS-Verlauf-Fallback.
    Lädt nicht (offline / WebGL aus)? → automatisch CSS-Verlauf-Fallback.
@@ -79,16 +79,16 @@ function initHeroShader(container) {
       pattern -= fbm(p * 6.0 - t * 0.5) * 0.3;
       pattern += ripple * 0.45;
 
-      // --- Bold-Plum-Palette -------------------------------------
-      vec3 c1    = vec3(0.07, 0.03, 0.06); // tiefes Aubergine
-      vec3 c2    = vec3(0.42, 0.18, 0.32); // Plum
-      vec3 blush = vec3(0.79, 0.50, 0.52); // Blush / Rosé
-      vec3 gold  = vec3(0.86, 0.66, 0.39); // warmes Gold
+      // --- Forest & Bone-Palette ---------------------------------
+      vec3 c1    = vec3(0.07, 0.13, 0.10); // tiefes Waldgrün (fast schwarz)
+      vec3 c2    = vec3(0.176, 0.290, 0.243); // mittleres Waldgrün #2d4a3e
+      vec3 sage  = vec3(0.46, 0.54, 0.48); // gedämpftes Salbei
+      vec3 brass = vec3(0.545, 0.435, 0.278); // gedämpftes Messing #8b6f47
 
       vec3 color = mix(c1, c2, smoothstep(0.34, 0.62, pattern));
-      color = mix(color, blush, smoothstep(0.60, 0.78, pattern) * 0.45);
+      color = mix(color, sage, smoothstep(0.60, 0.78, pattern) * 0.40);
       float hl = pow(smoothstep(0.70, 0.88, pattern), 2.0);
-      color = mix(color, gold, hl);
+      color = mix(color, brass, hl);
 
       gl_FragColor = vec4(color, 1.0);
     }
