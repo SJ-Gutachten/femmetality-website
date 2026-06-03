@@ -84,17 +84,25 @@
     </div>
   </nav>
 
-  <!-- Mobile menu -->
-  <div id="mobile-menu" class="hidden-menu fixed inset-0 z-40 bg-bg/97 lg:hidden flex flex-col items-center justify-center gap-7 text-center">
-    <a href="#fuer-dich" class="mobile-link font-display text-3xl text-plumDeep">Für dich</a>
-    <a href="#ueber" class="mobile-link font-display text-3xl text-plumDeep">Über</a>
-    <a href="#ansatz" class="mobile-link font-display text-3xl text-plumDeep">Ansatz</a>
-    <a href="#angebote" class="mobile-link font-display text-3xl text-plumDeep">Angebote</a>
-    <a href="#kontakt" class="mobile-link font-display text-3xl text-plumDeep">Kontakt</a>
-    <a href="#" data-booking class="mobile-link btn btn-primary mt-4">Erstgespräch buchen</a>
-    <button id="menu-close" class="absolute top-6 right-6 p-2 text-plumDeep" aria-label="Menü schließen">
-      <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg>
-    </button>
+  <!-- Mobile menu — Drawer von rechts -->
+  <div id="mobile-menu" class="hidden-menu fixed inset-0 z-40 lg:hidden">
+    <div id="menu-backdrop" class="menu-backdrop absolute inset-0"></div>
+    <div class="menu-panel absolute top-0 right-0 h-full flex flex-col">
+      <div class="flex items-center justify-between px-7 pt-6 pb-2">
+        <span class="wordmark text-plumDeep text-sm">FEMMETALITY</span>
+        <button id="menu-close" class="p-2 -mr-2 text-plumDeep" aria-label="Menü schließen">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg>
+        </button>
+      </div>
+      <nav class="flex flex-col px-7 pt-4">
+        <a href="#fuer-dich" class="mobile-link font-display text-plumDeep">Für dich</a>
+        <a href="#ueber" class="mobile-link font-display text-plumDeep">Über</a>
+        <a href="#ansatz" class="mobile-link font-display text-plumDeep">Ansatz</a>
+        <a href="#angebote" class="mobile-link font-display text-plumDeep">Angebote</a>
+        <a href="#kontakt" class="mobile-link font-display text-plumDeep">Kontakt</a>
+      </nav>
+      <a href="#" data-booking class="btn btn-primary mx-7 mt-7">Erstgespräch buchen</a>
+    </div>
   </div>
 
   <main>

@@ -51,8 +51,11 @@ document.addEventListener("DOMContentLoaded", () => {
     document.body.style.overflow = "";
   };
 
+  const backdrop = document.getElementById("menu-backdrop");
+
   toggle?.addEventListener("click", openMenu);
   closeBtn?.addEventListener("click", closeMenu);
+  backdrop?.addEventListener("click", closeMenu);
   menu?.querySelectorAll("a").forEach((a) => a.addEventListener("click", closeMenu));
   document.addEventListener("keydown", (e) => {
     if (e.key === "Escape" && !menu.classList.contains("hidden-menu")) closeMenu();

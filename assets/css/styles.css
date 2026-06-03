@@ -369,9 +369,40 @@ body::before {
   background: var(--bg); border-color: var(--bg); color: var(--ink); box-shadow: none;
 }
 
-/* Mobile menu */
-#mobile-menu { transition: opacity .35s var(--ease), visibility .35s var(--ease); }
-#mobile-menu.hidden-menu { opacity: 0; visibility: hidden; pointer-events: none; }
+/* Mobile menu — Drawer von rechts */
+#mobile-menu { transition: visibility .45s var(--ease); }
+#mobile-menu.hidden-menu { visibility: hidden; pointer-events: none; }
+
+/* Abdunkelnder Hintergrund hinter dem Panel */
+.menu-backdrop {
+  background: rgba(26, 46, 37, .42);
+  -webkit-backdrop-filter: blur(3px); backdrop-filter: blur(3px);
+  opacity: 1; transition: opacity .45s var(--ease);
+}
+#mobile-menu.hidden-menu .menu-backdrop { opacity: 0; }
+
+/* Das eigentliche Panel: solider Hintergrund, schiebt von rechts ein */
+.menu-panel {
+  width: min(80vw, 320px);
+  background: var(--bg);
+  box-shadow: -18px 0 55px rgba(26, 46, 37, .20);
+  transform: translateX(0);
+  transition: transform .45s var(--ease);
+  padding-bottom: 2rem;
+}
+#mobile-menu.hidden-menu .menu-panel { transform: translateX(100%); }
+
+/* Menüeinträge: links ausgerichtet, klar lesbar, mit Trennlinien */
+.menu-panel .mobile-link {
+  font-size: 1.5rem;
+  line-height: 1.2;
+  padding: 0.85rem 0;
+  border-bottom: 1px solid var(--line);
+  transition: color .25s var(--ease), padding-left .25s var(--ease);
+}
+.menu-panel .mobile-link:last-of-type { border-bottom: none; }
+.menu-panel .mobile-link:hover,
+.menu-panel .mobile-link:active { color: var(--accent); padding-left: 0.35rem; }
 
 /* Vertikales Section-Label (Editorial-Detail) */
 .side-index {
