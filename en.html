@@ -84,24 +84,29 @@
     </div>
   </nav>
 
-  <!-- Mobile menu — right-hand drawer -->
-  <div id="mobile-menu" class="hidden-menu fixed inset-0 z-40 lg:hidden">
-    <div id="menu-backdrop" class="menu-backdrop absolute inset-0"></div>
-    <div class="menu-panel absolute top-0 right-0 h-full flex flex-col">
-      <div class="flex items-center justify-between px-7 pt-6 pb-2">
-        <span class="wordmark text-plumDeep text-sm">FEMMETALITY</span>
-        <button id="menu-close" class="p-2 -mr-2 text-plumDeep" aria-label="Close menu">
-          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg>
+  <!-- Mobile menu — slide-in overlay panel from the right -->
+  <div id="mobile-menu" aria-hidden="true">
+    <div id="menu-backdrop" class="menu-backdrop"></div>
+    <div class="menu-panel">
+      <div class="menu-head">
+        <span class="menu-wordmark">FEMMETALITY</span>
+        <button id="menu-close" class="menu-close" aria-label="Close menu">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg>
         </button>
       </div>
-      <nav class="flex flex-col px-7 pt-4">
-        <a href="#fuer-dich" class="mobile-link font-display text-plumDeep">For You</a>
-        <a href="#ueber" class="mobile-link font-display text-plumDeep">About</a>
-        <a href="#ansatz" class="mobile-link font-display text-plumDeep">Approach</a>
-        <a href="#angebote" class="mobile-link font-display text-plumDeep">Offerings</a>
-        <a href="#kontakt" class="mobile-link font-display text-plumDeep">Contact</a>
+      <nav>
+        <a href="#fuer-dich" class="mobile-link">For You</a>
+        <a href="#ueber" class="mobile-link">About</a>
+        <a href="#ansatz" class="mobile-link">Approach</a>
+        <a href="#angebote" class="mobile-link">Offerings</a>
+        <a href="#kontakt" class="mobile-link">Contact</a>
       </nav>
-      <a href="#" data-booking class="btn btn-primary mx-7 mt-7">Book a Call</a>
+      <a href="#" data-booking class="btn btn-gold menu-cta">Book a Call</a>
+      <div class="menu-lang">
+        <a href="index.html" hreflang="de">DE</a>
+        <span class="menu-lang-sep" aria-hidden="true">·</span>
+        <a href="en.html" class="is-active" hreflang="en">EN</a>
+      </div>
     </div>
   </div>
 
