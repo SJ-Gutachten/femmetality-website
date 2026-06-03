@@ -35,29 +35,6 @@ document.addEventListener("DOMContentLoaded", () => {
   onScroll();
   window.addEventListener("scroll", onScroll, { passive: true });
 
-  /* ---- Mobiles Menü -------------------------------------------- */
-  const menu = document.getElementById("mobile-menu");
-  const toggle = document.getElementById("menu-toggle");
-  const closeBtn = document.getElementById("menu-close");
-
-  const openMenu = () => {
-    menu.classList.remove("hidden-menu");
-    toggle.setAttribute("aria-expanded", "true");
-    document.body.style.overflow = "hidden";
-  };
-  const closeMenu = () => {
-    menu.classList.add("hidden-menu");
-    toggle.setAttribute("aria-expanded", "false");
-    document.body.style.overflow = "";
-  };
-
-  toggle?.addEventListener("click", openMenu);
-  closeBtn?.addEventListener("click", closeMenu);
-  menu?.querySelectorAll("a").forEach((a) => a.addEventListener("click", closeMenu));
-  document.addEventListener("keydown", (e) => {
-    if (e.key === "Escape" && !menu.classList.contains("hidden-menu")) closeMenu();
-  });
-
   /* ---- Scroll-Reveal ------------------------------------------- */
   const reveals = Array.from(document.querySelectorAll(".reveal"));
   const revealAll = () => reveals.forEach((el) => el.classList.add("is-visible"));
