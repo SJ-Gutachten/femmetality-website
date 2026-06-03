@@ -40,27 +40,22 @@ document.addEventListener("DOMContentLoaded", () => {
   const toggle = document.getElementById("menu-toggle");
   const closeBtn = document.getElementById("menu-close");
 
-  const backdrop = document.getElementById("menu-backdrop");
-
   const openMenu = () => {
-    menu.classList.add("is-open");
-    menu.setAttribute("aria-hidden", "false");
+    menu.classList.remove("hidden-menu");
     toggle.setAttribute("aria-expanded", "true");
     document.body.style.overflow = "hidden";
   };
   const closeMenu = () => {
-    menu.classList.remove("is-open");
-    menu.setAttribute("aria-hidden", "true");
+    menu.classList.add("hidden-menu");
     toggle.setAttribute("aria-expanded", "false");
     document.body.style.overflow = "";
   };
 
   toggle?.addEventListener("click", openMenu);
   closeBtn?.addEventListener("click", closeMenu);
-  backdrop?.addEventListener("click", closeMenu);
   menu?.querySelectorAll("a").forEach((a) => a.addEventListener("click", closeMenu));
   document.addEventListener("keydown", (e) => {
-    if (e.key === "Escape" && menu.classList.contains("is-open")) closeMenu();
+    if (e.key === "Escape" && !menu.classList.contains("hidden-menu")) closeMenu();
   });
 
   /* ---- Scroll-Reveal ------------------------------------------- */
