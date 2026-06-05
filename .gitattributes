@@ -1,0 +1,19 @@
+# Treat these as binary — never apply line-ending (CRLF/LF) conversion,
+# which would corrupt them on checkout.
+*.pdf  binary
+*.jpg  binary
+*.jpeg binary
+*.png  binary
+*.gif  binary
+*.webp binary
+*.svg  text
+*.ico  binary
+*.woff  binary
+*.woff2 binary
+*.ttf  binary
+*.otf  binary
+*.eot  binary
+*.mp4  binary
+*.webm binary
+*.mov  binary
+*.zip  binary
